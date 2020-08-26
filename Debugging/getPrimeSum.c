@@ -24,8 +24,8 @@ int main()
 		{
 			primes[i] = number;
 			i++;
-			number += 2;
 		}
+		number += 2;
 	}
 
 	// Now, let's compute their sum
