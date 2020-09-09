@@ -1,0 +1,41 @@
+///////////////////////////////////////////////////////////////////////
+//File: Fibonacci Sequence.c
+///////////////////////////////////////////////////////////////////////
+//Purpose: Does Fibonacci Sequence stuff.
+///////////////////////////////////////////////////////////////////////
+//Programmer: Elliott DuCharme
+///////////////////////////////////////////////////////////////////////
+//Known issues/bugs:
+///////////////////////////////////////////////////////////////////////
+//Revisions: v. 1.0
+///////////////////////////////////////////////////////////////////////
+//Comments: Created 9/9/2020 11:11 AM
+///////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+
+//Fib values: 0 1 1 2 3 5 8 13 21 34 55
+//Indexes:    0 1 2 3 4 5 6 7  8  9  10
+long long fib(int n)
+{
+    //First check for the base case.
+    if (n == 0)
+        return 0;
+    else if (n == 1)
+        return 1;
+    else
+    {
+        long long value = fib(n - 1) + fib(n - 2);
+    }
+}
+
+int main()
+{
+    int n;
+    printf("Which Fibonacci Number would you like to solve for? ");
+    scanf("%d", &n);
+
+    long long value = fib(n);
+    printf("The %d Fibonacci Number is %lld.\n", n, value);
+
+    return 0;
+}
