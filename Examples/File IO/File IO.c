@@ -1,0 +1,34 @@
+///////////////////////////////////////////////////////////////////////
+//File: File IO.c
+///////////////////////////////////////////////////////////////////////
+//Purpose: In-class example for File I/O.
+///////////////////////////////////////////////////////////////////////
+//Programmer: Elliott DuCharme for Computer Science II (CSC 250).
+///////////////////////////////////////////////////////////////////////
+//Created: Friday, September 18, 2020.
+///////////////////////////////////////////////////////////////////////
+//Comments:
+///////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+
+int main()
+{
+    FILE *fp;
+    char fileName[20];
+    fp = fopen("test.txt", "a");
+
+    if (fp == NULL)
+    {
+        printf("Error, file not opened.\n");
+        printf("Enter the file name you want to open: ");
+        scanf("%s", fileName);
+        fp = fopen(fileName, "r");
+    }
+
+    int x = 42;
+    char name[10] = "Austin";
+    fprintf("My name is %s\nMy favorite number is %d.", name, x);
+
+    fclose(fp);
+    return 0;
+}
