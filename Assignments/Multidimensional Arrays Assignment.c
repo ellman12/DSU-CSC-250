@@ -46,7 +46,7 @@ int main()
         for (int j = 0; j < 5; j++)
         {
             monthlyBalances[i][j] = randPrice();
-            printf("customers[%d][%d] = $ .2%f\n", i, j, monthlyBalances[i][j]);
+            printf("customers[%d][%d] = $ %.2f\n", i, j, monthlyBalances[i][j]);
         }
 
         printf("\n");
