@@ -47,6 +47,8 @@ int main()
     //Twelve months (rows), five columns with dollar values for the 5 customers.
     float monthlyBalances[12][5];
 
+    printf("\n");
+
     for (i = 0; i < 6; i++)
     {
         for (j = 0; j < 11; j++)
