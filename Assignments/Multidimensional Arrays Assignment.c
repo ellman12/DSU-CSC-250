@@ -39,7 +39,7 @@ int main()
     float monthlySummary; //For each month, this monthly summary is printed next to the five people in its own column.
 
     //One name in each row, plus the summary column.
-    char customers[6][15] = {"Willie", "Kelly", "Terry", "Jordan", "Taylor", "Monthly Summary"};
+    char columns[6][15] = {"Willie", "Kelly", "Terry", "Jordan", "Taylor", "Monthly Summary"};
 
     //Stores averages for the five customers for the whole year.
     float annualAverages[5];
@@ -51,7 +51,7 @@ int main()
     {
         for (j = 0; j < 11; j++)
         {
-            printf("%c", customers[i][j]);
+            printf("%c", columns[i][j]);
         }
 
         printf("\t\t");
@@ -73,7 +73,7 @@ int main()
             else
                 printf("Month %d: $ %.2f\t", i + 1, monthlyBalances[i][j]);
         }
-        
+
         if (i < 9)
             printf("Month %d:  $ %.2f\n", i + 1, monthlySummary);
         else
