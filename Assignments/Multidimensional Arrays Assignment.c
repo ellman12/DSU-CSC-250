@@ -47,8 +47,7 @@ int main()
     //Twelve months (rows), five columns with dollar values for the 5 customers.
     float monthlyBalances[12][5];
 
-    printf("\n");
-
+    printf("\n"); //Print out all six columns (five people and the monthly summary).
     for (i = 0; i < 6; i++)
     {
         for (j = 0; j < 11; j++)
@@ -59,8 +58,7 @@ int main()
         printf("\t\t");
     }
 
-    printf("\n");
-
+    printf("\n"); //Print out the balances and the summary.
     for (i = 0; i < 12; i++)
     {
         for (j = 0; j < 5; j++)
