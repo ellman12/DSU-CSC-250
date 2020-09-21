@@ -73,9 +73,13 @@ int main()
             else
                 printf("Month %d: $ %.2f\t", i + 1, monthlyBalances[i][j]);
         }
+        
+        if (i < 9)
+            printf("Month %d:  $ %.2f\n", i + 1, monthlySummary);
+        else
+            printf("Month %d: $ %.2f\n", i + 1, monthlySummary);
 
-            printf("$ %.2f\n", monthlySummary);
-            monthlySummary = 0; //Reset for next month.
+        monthlySummary = 0; //Reset for next month.
     }
 
     printf("\nAverage monthly balances:\n");
