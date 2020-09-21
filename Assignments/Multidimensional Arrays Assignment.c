@@ -40,6 +40,7 @@ int main()
     //One name in each row.
     char customers[5][10] = {"Willie", "Kelly", "Terry", "Jordan", "Taylor"};
 
+    //Stores averages for the five customers.
     float averages[5];
 
     //Twelve months (rows), five columns with dollar values for the 5 customers.
@@ -63,15 +64,24 @@ int main()
         {
             monthlyBalances[i][j] = randPrice();
             averages[i] += monthlyBalances[i][j];
-            printf("Month %d balance: $ %.2f\t", i + 1, monthlyBalances[i][j]);
+
+            if (i < 9) //Make it look nice and perfectly aligned.
+                printf("Month %d balance:  $ %.2f\t", i + 1, monthlyBalances[i][j]);
+            else
+                printf("Month %d balance: $ %.2f\t", i + 1, monthlyBalances[i][j]);
         }
 
         printf("\n");
     }
 
+    printf("Average monthly balances:\n");
+
     for (i = 0; i < 5; i++)
     {
+        printf("$ %.2f\t\t\t\t", averages[i]);
     }
+
+    printf("\n");
 
     return 0;
 }
