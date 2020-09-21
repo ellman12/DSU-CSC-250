@@ -9,13 +9,14 @@
 ///////////////////////////////////////////////////////////////////////
 //Created: Wednesday, September 16, 2020.
 ///////////////////////////////////////////////////////////////////////
-//Comments:
+//Comments: https://d2l.sdbor.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=876054&grpid=0&isprv=0&bp=0&ou=1453155
+//I did the extra credit.
 ///////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
 
-float randPrice()
+float randPrice() //Return a pseudorandom price.
 {
     int MIN = 0, MAX = 20000; //dollars
     float whole = rand() % (MAX + 1 - MIN) + MIN;
@@ -30,6 +31,8 @@ float randPrice()
     whole = whole + number;
     return whole;
 }
+
+
 
 int main()
 {
@@ -63,7 +66,7 @@ int main()
     {
         for (j = 0; j < 5; j++)
         {
-            // monthlyBalances[i][j] = randPrice();
+            // monthlyBalances[i][j] = randPrice(); //TODO: Set this back to this. 10s are used for testing and easy math.
             monthlyBalances[i][j] = 10;
             monthlySummary += monthlyBalances[i][j];
             annualAverages[i] += monthlyBalances[i][j];
