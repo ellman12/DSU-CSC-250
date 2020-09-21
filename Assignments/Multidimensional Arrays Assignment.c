@@ -36,24 +36,25 @@ int main()
     srand(time(NULL));
 
     int i, j;
+    float monthlySummary; //For each month, this monthly summary is printed next to the five people in its own column.
 
-    //One name in each row.
-    char customers[5][10] = {"Willie", "Kelly", "Terry", "Jordan", "Taylor"};
+    //One name in each row, plus the summary column.
+    char customers[6][15] = {"Willie", "Kelly", "Terry", "Jordan", "Taylor", "Monthly Summary"};
 
-    //Stores averages for the five customers.
-    float averages[5];
+    //Stores averages for the five customers for the whole year.
+    float annualAverages[5];
 
     //Twelve months (rows), five columns with dollar values for the 5 customers.
     float monthlyBalances[12][5];
 
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < 6; i++)
     {
-        for (j = 0; j < 10; j++)
+        for (j = 0; j < 11; j++)
         {
             printf("%c", customers[i][j]);
         }
 
-        printf("\t\t\t");
+        printf("\t\t");
     }
 
     printf("\n");
@@ -63,22 +64,23 @@ int main()
         for (j = 0; j < 5; j++)
         {
             monthlyBalances[i][j] = randPrice();
-            averages[i] += monthlyBalances[i][j];
+            monthlySummary += monthlyBalances[i][j];
+            annualAverages[i] += monthlyBalances[i][j];
 
             if (i < 9) //Make it look nice and perfectly aligned.
-                printf("Month %d balance:  $ %.2f\t", i + 1, monthlyBalances[i][j]);
+                printf("Month %d:  $ %.2f\t", i + 1, monthlyBalances[i][j]);
             else
-                printf("Month %d balance: $ %.2f\t", i + 1, monthlyBalances[i][j]);
+                printf("Month %d: $ %.2f\t", i + 1, monthlyBalances[i][j]);
         }
 
-        printf("\n");
+            printf("$ %.2f\n", monthlySummary);
     }
 
-    printf("Average monthly balances:\n");
+    printf("\nAverage monthly balances:\n");
 
     for (i = 0; i < 5; i++)
     {
-        printf("$ %.2f\t\t\t\t", averages[i]);
+        printf("\t  $ %.2f\t", annualAverages[i]);
     }
 
     printf("\n");
