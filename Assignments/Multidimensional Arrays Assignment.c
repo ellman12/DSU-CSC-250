@@ -63,7 +63,8 @@ int main()
     {
         for (j = 0; j < 5; j++)
         {
-            monthlyBalances[i][j] = randPrice();
+            // monthlyBalances[i][j] = randPrice();
+            monthlyBalances[i][j] = 10;
             monthlySummary += monthlyBalances[i][j];
             annualAverages[i] += monthlyBalances[i][j];
 
@@ -74,6 +75,7 @@ int main()
         }
 
             printf("$ %.2f\n", monthlySummary);
+            monthlySummary = 0; //Reset for next month.
     }
 
     printf("\nAverage monthly balances:\n");
