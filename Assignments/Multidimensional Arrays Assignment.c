@@ -80,6 +80,7 @@ int main()
 
             editDollarValue(customerChoice, monthChoice, newDollarValue);
             printf("Value has been updated! Type 1 to see the change.\n");
+            printArrays(annualAverages, columns, monthlyBalances, monthlySummary); //Print the newly updated array.
         }
 
         else if (menuChoice == 3) //Quit.
