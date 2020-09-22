@@ -28,6 +28,16 @@ float annualAverages[5];
 //Twelve months (rows), five columns with dollar values for the 5 customers.
 float monthlyBalances[12][5];
 
+//Checks to see if a user entered an invalid choice/option for a menu.
+//Returns 1 if true (they did), or 0 if they did not enter bad data.
+int invalidEntryCheck(int choice, int minValue, int maxValue)
+{
+    if (choice < minValue || choice > maxValue)
+        return 1; //User entered an incorrect choice.
+    else
+        return 0; //They didn't.
+}
+
 float randPrice() //Return a pseudorandom price.
 {
     int MIN = 0, MAX = 20000; //dollars
@@ -44,7 +54,18 @@ float randPrice() //Return a pseudorandom price.
     return whole;
 }
 
-void printArrays()
+void fillArraysRandNums() //Called only when started up for the first time.
+{
+    for (int i = 0; i < 12; i++)
+    {
+        for (int j = 0; j < 5; j++)
+        {
+            monthlyBalances[i][j] = randPrice();
+        }
+    }
+}
+
+void printAndFillArrays()
 {
     printf("\n"); //Print out all six columns (five people and the monthly summary).
     for (int i = 0; i < 6; i++)
@@ -62,7 +83,6 @@ void printArrays()
     {
         for (int j = 0; j < 5; j++)
         {
-            monthlyBalances[i][j] = randPrice();
             monthlySummary += monthlyBalances[i][j];
             annualAverages[i] += monthlyBalances[i][j];
 
@@ -103,32 +123,32 @@ int main()
 
     while (programRunning == 1)
     {
-        printf("\n1. Print the values in the arrays.\n2. Edit a dollar value.\n3. Quit.\n\nWhat would you like to do? ");
+        printf("\n\n\n\n1. Print the values in the arrays.\n2. Edit a dollar value.\n3. Quit.\n\nWhat would you like to do? ");
         scanf("%d", &menuChoice);
 
         if (menuChoice == 1)
         {
-            printArrays();
+            printAndFillArrays();
         }
 
         else if (menuChoice == 2) //Edit value.
         {
-            printf("Choose a customer (enter a number): \n");
+            printf("\n1. Willie\n2. Kelly\n3. Terry\n4. Jordan\n5. Taylor\n\nChoose a customer (enter a number): ");
             scanf("%d", &customerChoice);
 
-            if (customerChoice > 5 || customerChoice < 1)
+            if (invalidEntryCheck(customerChoice, 0, 5))
             {
-                printf("\nError. Invalid choice.");
-                // continue;
+                printf("\nError. Invalid choice. Try again.");
+                continue;
             }
 
-            printf("\nEnter a month number:\n\n1. January\n2. February\n3. March\n4. April\n5. May\n6. June\n7. July\n8. August\n9. September\n10. October\n11. November\n12. December\n\n");
-            scanf("%d", &menuChoice);
+            printf("\n\n1. January\n2. February\n3. March\n4. April\n5. May\n6. June\n7. July\n8. August\n9. September\n10. October\n11. November\n12. December\n\nEnter a month number: ");
+            scanf("%d", &monthChoice);
 
-            if (menuChoice > 12 || menuChoice < 1)
+            if (invalidEntryCheck(monthChoice, 0, 12))
             {
-                printf("\nError. Invalid choice.");
-                // continue;
+                printf("\nError. Invalid choice. Try again.");
+                continue;
             }
         }
 
@@ -140,7 +160,7 @@ int main()
 
         else
         {
-            printf("\nError. Invalid choice.");
+            printf("\nError. Invalid choice. Try again.");
         }
     }
 
