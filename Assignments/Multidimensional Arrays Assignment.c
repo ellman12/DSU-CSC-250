@@ -32,8 +32,6 @@ float randPrice() //Return a pseudorandom price.
     return whole;
 }
 
-
-
 int main()
 {
     srand(time(NULL));
@@ -66,8 +64,7 @@ int main()
     {
         for (j = 0; j < 5; j++)
         {
-            // monthlyBalances[i][j] = randPrice(); //TODO: Set this back to this. 10s are used for testing and easy math.
-            monthlyBalances[i][j] = 10;
+            monthlyBalances[i][j] = randPrice();
             monthlySummary += monthlyBalances[i][j];
             annualAverages[i] += monthlyBalances[i][j];
 
