@@ -1,0 +1,61 @@
+Write a function that returns the sum of two integers.
+The input should be the two integers that are summed together, return the result. Call the function Sum.
+
+// Function Declaraton
+int Sum(int x, int y);
+
+int main()
+{
+	int result;
+	int x = 10;
+	int y = 20;
+	result = Sum(10, 20); // Function Call, with Actual Parameters
+}
+
+// Function Definition
+int Sum(int x, int y)     // Formal Parameters
+{
+	int result = x+y;
+	return result;
+}
+
+float ave = Sum(x, y) / 2;
+
+printf("%d", Sum(x, y));
+
+
+
+
+
+
+
+
+
+
+
+typedef struct
+{
+	char name[20];
+	char sport[20];
+	int totalPoints;
+}athlete;
+
+void printStruct(athlete a)
+{
+...
+}
+
+
+// in main
+athlete player = {"Sean O'Brien", "Rugby", 159};
+printStruct(player);
+
+
+int x = rand(); [0,32767]
+
+srand(time(NULL));
+
+int x = rand()%(max+1 - min) + min;
+
+float y = (float)rand()/rand()
+
