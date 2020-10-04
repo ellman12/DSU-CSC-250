@@ -21,6 +21,16 @@ typedef struct
     int calories;
 } Meal;
 
+//Checks to see if a user entered an invalid choice/option for a menu.
+//Returns 1 if true (they did), or 0 if they did not enter bad data.
+int invalidEntryCheck(int choice, int minValue, int maxValue)
+{
+    if (choice < minValue || choice > maxValue)
+        return 1; //User entered an incorrect choice.
+    else
+        return 0; //They didn't.
+}
+
 Meal createMealItem(Meal meal, char name[20], float price, int calories)
 {
     strcpy(meal.name, name);
@@ -53,16 +63,6 @@ void takeOrder(Meal meal[])
     }
 }
 
-//Checks to see if a user entered an invalid choice/option for a menu.
-//Returns 1 if true (they did), or 0 if they did not enter bad data.
-int invalidEntryCheck(int choice, int minValue, int maxValue)
-{
-    if (choice < minValue || choice > maxValue)
-        return 1; //User entered an incorrect choice.
-    else
-        return 0; //They didn't.
-}
-
 int main()
 {
     Meal item1 = createMealItem(item1, "Hamburger", 3.99, 650);
@@ -73,6 +73,7 @@ int main()
 
     Meal foodItems[5] = {item1, item2, item3, item4, item5};
 
+    printf("Welcome to the restaurant!\n\n");
     printMenu(foodItems);
     takeOrder(foodItems);
 
