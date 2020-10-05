@@ -118,8 +118,8 @@ void takeOrder()
         totalPrice = 0;
 
         strcpy(orders[numOfOrders].name, foodItems[userChoice - 1].name);
-        orders[numOfOrders].price = foodItems[userChoice].price;
-        orders[numOfOrders].calories = foodItems[userChoice].calories;
+        orders[numOfOrders].price = foodItems[userChoice - 1].price;
+        orders[numOfOrders].calories = foodItems[userChoice - 1].calories;
         numOfOrders++;
 
         printf("\nThank you for ordering the %s. Your meal contains %d calories, and will cost $%.2f.\n\n", foodItems[userChoice - 1].name, foodItems[userChoice - 1].calories, foodItems[userChoice - 1].price);
@@ -136,7 +136,7 @@ void takeOrder()
         printf("Total price: $%.2f\tTotal calories: %d\n\n", totalPrice, totalCalories);
     }
 }
-// TODO: chicken sandwich is not getting saved to the orders array properly i think.
+
 int main()
 {
     //Default starting values.
