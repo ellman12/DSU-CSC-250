@@ -21,13 +21,16 @@ typedef struct
     int calories;
 } Meal;
 
+int programRunning = 1;
 int userChoice;
 Meal item1;
 Meal item2;
 Meal item3;
 Meal item4;
 Meal item5;
-Meal foodItems[5];
+Meal foodItems[5];   //The 5 items on the menu.
+Meal orders[20];     //What the user orders; stored for later use.
+int numOfOrders = 0; //How many things the user has ordered.
 
 //Checks to see if a user entered an invalid choice/option for a menu.
 //Returns 1 if true (they did), or 0 if they did not enter bad data.
@@ -50,7 +53,8 @@ Meal createMealItem(Meal meal, char name[20], float price, int calories)
 
 void printMenu()
 {
-    printf("0. Modify an item\n\n");
+    printf("-1. Exit the program.\n\n");
+    printf("0. Modify an item.\n\n");
     for (int i = 0; i < 5; i++)
         printf("%d. %s\n$%.2f\nCalories: %d\n\n", i + 1, foodItems[i].name, foodItems[i].price, foodItems[i].calories);
 }
@@ -61,7 +65,7 @@ void modifyItem()
     scanf("%d", &userChoice);
     if (invalidEntryCheck(userChoice, 1, 5))
     {
-        printf("Please enter a valid number. Try again.");
+        printf("Please enter a valid number. Try again.\n\n");
     }
     else
     {
@@ -71,37 +75,55 @@ void modifyItem()
 
         printf("What would you like to change the name to? ");
         scanf("%s", &newName);
-        strcpy(foodItems[userChoice].name, newName);
-        printf("You changed the name to %s.\n", foodItems[userChoice].name);
+        strcpy(foodItems[userChoice - 1].name, newName);
+        printf("You changed the name to %s.\n", foodItems[userChoice - 1].name);
 
         printf("\nWhat would you like to change the price to? ");
         scanf("%f", &newPrice);
-        foodItems[userChoice].price = newPrice;
-        printf("You changed the price to $%.2f.\n", foodItems[userChoice].price);
+        foodItems[userChoice - 1].price = newPrice;
+        printf("You changed the price to $%.2f.\n", foodItems[userChoice - 1].price);
 
         printf("\nWhat would you like to change the calories to? ");
         scanf("%d", &newCalories);
-        foodItems[userChoice].calories = newCalories;
-        printf("You changed the calories to %d.\n\n", foodItems[userChoice].calories);
+        foodItems[userChoice - 1].calories = newCalories;
+        printf("You changed the calories to %d.\n\n", foodItems[userChoice - 1].calories);
 
         printf("Newly updated menu:\n\n");
-        printMenu(foodItems);
     }
 }
 
 void takeOrder()
 {
-    printf("Please enter a number to pick the item you would like: ");
+    printf("Please choose an item from our menu: ");
     scanf("%d", &userChoice);
 
-    if (invalidEntryCheck(userChoice, 0, 5))
+    if (invalidEntryCheck(userChoice, -1, 5))
     {
-        printf("Please enter a valid number. Try again.");
+        printf("Please enter a valid number. Try again.\n\n");
+    }
+    else if (userChoice == -1)
+    {
+        printf("Goodbye! Please come again.\n");
+        programRunning = 0;
     }
     else if (userChoice == 0)
         modifyItem();
     else
-        printf("\nThank you for ordering the %s. Your meal contains %d calories, and will cost $%.2f.", foodItems[userChoice - 1].name, foodItems[userChoice - 1].calories, foodItems[userChoice - 1].price);
+    {
+        strcpy(orders[numOfOrders].name, foodItems[userChoice].name);
+        orders[numOfOrders].price = foodItems[userChoice].price;
+        orders[numOfOrders].calories = foodItems[userChoice].calories;
+        numOfOrders++;
+
+        printf("\nThank you for ordering the %s. Your meal contains %d calories, and will cost $%.2f.\n\n", foodItems[userChoice - 1].name, foodItems[userChoice - 1].calories, foodItems[userChoice - 1].price);
+        printf("Your order so far: \n\n");
+        for (int i = 0; i < numOfOrders; i++)
+        {
+            printf("Item #%d: %s\n", i + 1, orders[numOfOrders].name);
+            printf("Price: %f\n", orders[numOfOrders].price);
+            printf("Calories: %d\n\n", orders[numOfOrders].calories);
+        }
+    }
 }
 
 int main()
@@ -114,8 +136,12 @@ int main()
     foodItems[4] = createMealItem(item5, "Chicken Sandwich", 3.05, 515);
 
     printf("Welcome to the restaurant!\n\n");
-    printMenu();
-    takeOrder();
+
+    while (programRunning == 1)
+    {
+        printMenu();
+        takeOrder();
+    }
 
     return 0;
 }
