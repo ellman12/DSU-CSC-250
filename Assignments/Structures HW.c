@@ -10,6 +10,7 @@
 //Created: Wednesday, September 30, 2020.
 ///////////////////////////////////////////////////////////////////////
 //Comments: https://d2l.sdbor.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=879512&grpid=0&isprv=0&bp=0&ou=1453155
+//→ → → → I did the extra credit.
 ///////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 #include <string.h>
@@ -31,6 +32,8 @@ Meal item5;
 Meal foodItems[5];   //The 5 items on the menu.
 Meal orders[20];     //What the user orders; stored for later use.
 int numOfOrders = 0; //How many things the user has ordered.
+int totalCalories;
+float totalPrice;
 
 //Checks to see if a user entered an invalid choice/option for a menu.
 //Returns 1 if true (they did), or 0 if they did not enter bad data.
@@ -53,6 +56,7 @@ Meal createMealItem(Meal meal, char name[20], float price, int calories)
 
 void printMenu()
 {
+    printf("The Menu:\n");
     printf("-1. Exit the program.\n\n");
     printf("0. Modify an item.\n\n");
     for (int i = 0; i < 5; i++)
@@ -110,22 +114,30 @@ void takeOrder()
         modifyItem();
     else
     {
-        strcpy(orders[numOfOrders].name, foodItems[userChoice].name);
+        totalCalories = 0;
+        totalPrice = 0;
+
+        strcpy(orders[numOfOrders].name, foodItems[userChoice - 1].name);
         orders[numOfOrders].price = foodItems[userChoice].price;
         orders[numOfOrders].calories = foodItems[userChoice].calories;
         numOfOrders++;
 
         printf("\nThank you for ordering the %s. Your meal contains %d calories, and will cost $%.2f.\n\n", foodItems[userChoice - 1].name, foodItems[userChoice - 1].calories, foodItems[userChoice - 1].price);
-        printf("Your order so far: \n\n");
+        printf("Your order so far: \n");
         for (int i = 0; i < numOfOrders; i++)
         {
-            printf("Item #%d: %s\n", i + 1, orders[numOfOrders].name);
-            printf("Price: %f\n", orders[numOfOrders].price);
-            printf("Calories: %d\n\n", orders[numOfOrders].calories);
+            printf("Item #%d: %s\n", i + 1, orders[i].name);
+            printf("Price: $%.2f\n", orders[i].price);
+            printf("Calories: %d\n\n", orders[i].calories);
+            totalPrice += orders[i].price;
+            totalCalories += orders[i].calories;
         }
+
+        printf("Total price: $%.2f\tTotal calories: %d\n\n", totalPrice, totalCalories);
     }
 }
-
+// TODO: chicken sandwich is not getting saved to the orders array properly i think.
+// TODO: what happens when you save something to orders then modify then save again?
 int main()
 {
     //Default starting values.
