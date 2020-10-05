@@ -137,7 +137,6 @@ void takeOrder()
     }
 }
 // TODO: chicken sandwich is not getting saved to the orders array properly i think.
-// TODO: what happens when you save something to orders then modify then save again?
 int main()
 {
     //Default starting values.
