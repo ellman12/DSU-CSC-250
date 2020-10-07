@@ -1,0 +1,26 @@
+///////////////////////////////////////////////////////////////////////
+//File: Intro to Pointers 3.c
+///////////////////////////////////////////////////////////////////////
+//Purpose: In-class example.
+///////////////////////////////////////////////////////////////////////
+//Programmer: Elliott DuCharme for Computer Science II (CSC 250).
+///////////////////////////////////////////////////////////////////////
+//Created: Wednesday, October 7, 2020.
+///////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+
+int main()
+{
+    int x, y;
+    double *ptr = &x;
+
+    printf("Please enter in a value for x: ");
+    scanf("%d", ptr);
+
+    double db = *ptr + 10;
+
+    printf("db is equal to %lf, and x is equal to %d.\n", db, x);
+
+    printf("The value of &x is %p, ptr=%p, &ptr=%p, *ptr=%d\n", &x, ptr, &ptr, *ptr);
+    return 0;
+}
