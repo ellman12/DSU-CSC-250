@@ -11,8 +11,21 @@
 ///////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 
+void functionOne();
+void functionTwo();
+void functionThree();
+
+int main()
+{
+    functionOne();
+    functionTwo();
+    functionThree();
+    return 0;
+}
+
 void functionOne()
 {
+    printf("Entering functionOne() now...\n");
     int intVar;
     char charVar;
     float floatVar;
@@ -26,7 +39,7 @@ void functionOne()
     *intVarPtr = 10;
     *charVarPtr = 'A';
     *floatVarPtr = 3.14;
-    printf("Values of int, char, and float vars: %d, %c, and %f.\n\n", intVar, charVar, floatVar);
+    printf("Current values of int, char, and float vars: %d, %c, and %f.\n\n", intVar, charVar, floatVar);
 
     printf("Please enter a new value for the int variable.\n");
     scanf("%d", intVarPtr);
@@ -37,11 +50,12 @@ void functionOne()
     printf("Please enter a new value for the float variable.\n");
     scanf("%f", floatVarPtr);
 
-    printf("New values of int, char, and float vars: %d, %c, and %f.\n", intVar, charVar, floatVar);
+    printf("New values of int, char, and float vars: %d, '%c', and %f.\n\n", intVar, charVar, floatVar);
 }
 
 void functionTwo()
 {
+    printf("Entering functionTwo() now...\n");
     int intVar;
     char charVar;
     float floatVar;
@@ -49,7 +63,7 @@ void functionTwo()
     void *vp = &intVar;
     printf("Memory address for int var is: %p\n", vp);
     *((int *)vp) = 10;
-    printf("Value of int var: %d\n", intVar);
+    printf("Current value of int var: %d\n", intVar);
     printf("Enter a new int value:\n");
     scanf("%d", vp);
     printf("New value is: %d\n\n", intVar);
@@ -57,7 +71,7 @@ void functionTwo()
     vp = &charVar;
     printf("Memory address for char var is: %p\n", vp);
     *((char *)vp) = 'A';
-    printf("Value of char var: %c\n", charVar);
+    printf("Current value of char var: %c\n", charVar);
     printf("Enter a new char value:\n");
     scanf(" %c", vp);
     printf("New value is: %c\n\n", charVar);
@@ -65,7 +79,7 @@ void functionTwo()
     vp = &floatVar;
     printf("Memory address for float var is: %p\n", vp);
     *((float *)vp) = 3.14;
-    printf("Value of float var: %f\n", floatVar);
+    printf("Current value of float var: %f\n", floatVar);
     printf("Enter a new float value:\n");
     scanf("%f", vp);
     printf("New value is: %f\n\n", floatVar);
@@ -73,12 +87,12 @@ void functionTwo()
 
 void functionThree()
 {
-}
-
-int main()
-{
-    // functionOne();
-    functionTwo();
-    // functionThree();
-    return 0;
+    printf("Entering functionThree() now...\n");
+    int intVar;
+    double doubleVar;
+    int *intVarPtr = &intVar;
+    double *doubleVarPtr = &doubleVar;
+    printf("The size of an int and double var is %d bytes and %d bytes.\n", sizeof(intVar), sizeof(doubleVar));
+    printf("Pointers for int and double data types needs %d bytes and %d bytes.\n", sizeof(intVarPtr), sizeof(doubleVarPtr));
+    printf("All pointers have the same size because all they're really doing is pointing to a memory address. It's not like an int where it needs 4 bytes to store integer numbers, but a double needing twice that to store the whole and fractional part of a number.\n");
 }
