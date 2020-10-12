@@ -40,8 +40,45 @@ void functionOne()
     printf("New values of int, char, and float vars: %d, %c, and %f.\n", intVar, charVar, floatVar);
 }
 
+void functionTwo()
+{
+    int intVar;
+    char charVar;
+    float floatVar;
+
+    void *vp = &intVar;
+    printf("Memory address for int var is: %p\n", vp);
+    *((int *)vp) = 10;
+    printf("Value of int var: %d\n", intVar);
+    printf("Enter a new int value:\n");
+    scanf("%d", vp);
+    printf("New value is: %d\n\n", intVar);
+
+    vp = &charVar;
+    printf("Memory address for char var is: %p\n", vp);
+    *((char *)vp) = 'A';
+    printf("Value of char var: %c\n", charVar);
+    printf("Enter a new char value:\n");
+    scanf(" %c", vp);
+    printf("New value is: %c\n\n", charVar);
+
+    vp = &floatVar;
+    printf("Memory address for float var is: %p\n", vp);
+    *((float *)vp) = 3.14;
+    printf("Value of float var: %f\n", floatVar);
+    printf("Enter a new float value:\n");
+    scanf("%f", vp);
+    printf("New value is: %f\n\n", floatVar);
+}
+
+void functionThree()
+{
+}
+
 int main()
 {
-    functionOne();
+    // functionOne();
+    functionTwo();
+    // functionThree();
     return 0;
 }
