@@ -74,7 +74,7 @@ void functionTwo()
     printf("Current value of char var: %c\n", charVar);
     printf("Enter a new char value:\n");
     scanf(" %c", vp);
-    printf("New value is: %c\n\n", charVar);
+    printf("New value is: '%c'\n\n", charVar);
 
     vp = &floatVar;
     printf("Memory address for float var is: %p\n", vp);
@@ -94,5 +94,5 @@ void functionThree()
     double *doubleVarPtr = &doubleVar;
     printf("The size of an int and double var is %d bytes and %d bytes.\n", sizeof(intVar), sizeof(doubleVar));
     printf("Pointers for int and double data types needs %d bytes and %d bytes.\n", sizeof(intVarPtr), sizeof(doubleVarPtr));
-    printf("All pointers have the same size because all they're really doing is pointing to a memory address. It's not like an int where it needs 4 bytes to store integer numbers, but a double needing twice that to store the whole and fractional part of a number.\n");
+    printf("All pointers have the same size because all they're really doing is pointing to a memory address, whose size varies based on whether it's a 32 or 64 bit operating system. This is/needs to be the same size because that makes sense to do. It's not like an int where it needs 4 bytes to store integer numbers, but a double needing twice that to store the whole and fractional part of a number. Having memory addresses of different sizes and lengths would not only be ridiculous, but also extremely difficult, if not impossible.\n");
 }
