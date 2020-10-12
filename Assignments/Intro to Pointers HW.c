@@ -11,8 +11,37 @@
 ///////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 
+void functionOne()
+{
+    int intVar;
+    char charVar;
+    float floatVar;
+
+    int *intVarPtr = &intVar;
+    char *charVarPtr = &charVar;
+    float *floatVarPtr = &floatVar;
+
+    printf("Memory addresses of int, char, and float vars: %p, %p, and %p.\n\n", intVarPtr, charVarPtr, floatVarPtr);
+
+    *intVarPtr = 10;
+    *charVarPtr = 'A';
+    *floatVarPtr = 3.14;
+    printf("Values of int, char, and float vars: %d, %c, and %f.\n\n", intVar, charVar, floatVar);
+
+    printf("Please enter a new value for the int variable.\n");
+    scanf("%d", intVarPtr);
+
+    printf("Please enter a new value for the char variable.\n");
+    scanf(" %c", charVarPtr);
+
+    printf("Please enter a new value for the float variable.\n");
+    scanf("%f", floatVarPtr);
+
+    printf("New values of int, char, and float vars: %d, %c, and %f.\n", intVar, charVar, floatVar);
+}
+
 int main()
 {
-
+    functionOne();
     return 0;
 }
