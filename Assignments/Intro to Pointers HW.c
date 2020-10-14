@@ -8,6 +8,7 @@
 //Created: Friday, October 9, 2020 11:44 AM.
 ///////////////////////////////////////////////////////////////////////
 //Comments: https://d2l.sdbor.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=882288&grpid=0&isprv=0&bp=0&ou=1453155
+//I did the extra credit.
 ///////////////////////////////////////////////////////////////////////
 #include <stdio.h>
 
