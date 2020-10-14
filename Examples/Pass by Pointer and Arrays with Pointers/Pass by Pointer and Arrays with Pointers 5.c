@@ -1,0 +1,18 @@
+//Purpose: In-class example.
+///////////////////////////////////////////////////////////////////////
+//Programmer: Elliott DuCharme for Computer Science II (CSC 250).
+///////////////////////////////////////////////////////////////////////
+//Created: Wednesday, October 14, 2020 11:43 AM.
+///////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+
+int main()
+{
+    int x, y;
+    printf("&x = %p, &y = %p\n", &x, &y);
+
+    *(&x - 1) = 42;
+    printf("y = %d\n", y);
+
+    return 0;
+}
