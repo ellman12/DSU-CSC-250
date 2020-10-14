@@ -18,9 +18,9 @@ void functionFour();
 
 int main()
 {
-    // functionOne();
-    // functionTwo();
-    // functionThree();
+    functionOne();
+    functionTwo();
+    functionThree();
     functionFour();
     return 0;
 }
@@ -96,18 +96,17 @@ void functionThree()
     double *doubleVarPtr = &doubleVar;
     printf("The size of an int and double var is %d bytes and %d bytes.\n", sizeof(intVar), sizeof(doubleVar));
     printf("Pointers for int and double data types needs %d bytes and %d bytes.\n", sizeof(intVarPtr), sizeof(doubleVarPtr));
-    printf("All pointers have the same size because all they're really doing is pointing to a memory address, whose size varies based on whether it's a 32 or 64 bit operating system. This is/needs to be the same size because that makes sense to do. It's not like an int where it needs 4 bytes to store integer numbers, but a double needing twice that to store the whole and fractional part of a number. Having memory addresses of different sizes and lengths would not only be ridiculous, but also extremely difficult, if not impossible.\n");
+    printf("All pointers have the same size because all they're really doing is pointing to a memory address, whose size varies based on whether it's a 32 or 64 bit operating system. This is/needs to be the same size because that makes sense to do. It's not like an int where it needs 4 bytes to store integer numbers, but a double needing twice that to store the whole and fractional part of a number. Having memory addresses of different sizes and lengths would not only be ridiculous, but also extremely difficult, if not impossible.\n\n");
 }
 
 void functionFour()
 {
-    //https://www.google.com/search?sxsrf=ALeKk006URSw8bc-HVOqT20wD6VerNx1Hg%3A1602616527514&source=hp&ei=z_yFX8jhHIWltQarv4GgDw&iflsig=AINFCbYAAAAAX4YK385P9ixmnDYXEdqnm3VlSAFl7IhB&q=c+double+pointer&oq=c+double+pointer&gs_lcp=CgZwc3ktYWIQAzIHCCMQyQMQJzIHCAAQFBCHAjICCAAyBAgAEEMyAggAMgIIADICCAAyBAgAEEMyAggAMgIIADoECCMQJzoFCAAQsQNQzQFYuw5gvQ9oAHAAeACAAcgCiAHlEJIBCDAuMTIuMS4xmAEAoAEBqgEHZ3dzLXdpeg&sclient=psy-ab&ved=0ahUKEwiIhdPmo7LsAhWFUs0KHatfAPQQ4dUDCAc&uact=5
     printf("Entering functionFour() now...\n");
     int intVar;
     int *singlePtr = &intVar;
-    int *doublePtr = &singlePtr;
-    doublePtr = 42;
-    printf("Mem address intvar: %d\n", &intVar);
-    printf("Original variable memory address is: %d.\n", doublePtr);
-    printf("Memory address of  value is: %d.\n", doublePtr);
+    int **doublePtr = &singlePtr;
+    **doublePtr = 42;
+    printf("intVar memory address: %d\n", *doublePtr);
+    printf("Single pointer memory address: %d\n", doublePtr);
+    printf("intVar: %d\n", intVar);
 }
