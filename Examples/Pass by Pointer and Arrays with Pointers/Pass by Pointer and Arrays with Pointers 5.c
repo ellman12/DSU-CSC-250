@@ -1,3 +1,4 @@
+///////////////////////////////////////////////////////////////////////
 //Purpose: In-class example.
 ///////////////////////////////////////////////////////////////////////
 //Programmer: Elliott DuCharme for Computer Science II (CSC 250).
@@ -8,8 +9,9 @@
 
 int main()
 {
-    int x, y;
+    int x, y = 10;
     printf("&x = %p, &y = %p\n", &x, &y);
+    printf("y = %d\n", *(&x-1));
 
     *(&x - 1) = 42;
     printf("y = %d\n", y);
