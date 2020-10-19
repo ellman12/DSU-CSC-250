@@ -26,7 +26,7 @@ int main()
     for (i = 0; i < 20; i++)
     {
         ptr[i] = i * 2;
-        printf("ptr[%d] = %d\n", i, ptr[i]);
+        printf("%d\n", ptr[i]);
     }
 
 
