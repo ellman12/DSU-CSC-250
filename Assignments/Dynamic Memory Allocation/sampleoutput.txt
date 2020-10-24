@@ -1,0 +1,141 @@
+C:\Users\afobrien\Desktop>a
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+The stack is currently empty.
+
+>2
+The stack is already empty.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+The stack is currently empty.
+
+>1
+Please enter a value to place onto the stack: 4
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4
+
+>1
+Please enter a value to place onto the stack: 33
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33
+
+>1
+Please enter a value to place onto the stack: 23
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33      23
+
+>1
+Please enter a value to place onto the stack: 9
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33      23      9
+
+>2
+Now processing 9.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33      23
+
+>1
+Please enter a value to place onto the stack: 57
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33      23      57
+
+>2
+Now processing 57.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33      23
+
+>2
+Now processing 23.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4       33
+
+>2
+Now processing 33.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+4
+
+>2
+Now processing 4.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+The stack is currently empty.
+
+>2
+The stack is already empty.
+
+Welcome to stack program! Would you like to:
+1.) Add a new value to the stack.
+2.) Process a node on the stack.
+q.) Quit.
+
+Current Stack:
+The stack is currently empty.
+
+>q
+Now freeing all memory and exiting. Thank you!
+
+
+C:\Users\afobrien\Desktop>
