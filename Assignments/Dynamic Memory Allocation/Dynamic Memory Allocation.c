@@ -1,12 +1,13 @@
 ///////////////////////////////////////////////////////////////////////
-//Purpose: Homework for dynamic memory allocation.
+//Purpose: Homework for dynamic memory allocation; a stack using a single
+// pointer acting like an array that is reallocated throughout.
 ///////////////////////////////////////////////////////////////////////
 //Programmer: Elliott DuCharme for Computer Science II (CSC 250).
 ///////////////////////////////////////////////////////////////////////
 //Due Date: Oct. 30th.
 ///////////////////////////////////////////////////////////////////////
 //Created: Friday, October 23, 2020 6:31 PM.
-//Finished:
+//Finished: Monday, October 26, 2020 5:00 PM.
 ///////////////////////////////////////////////////////////////////////
 //Comments: https://d2l.sdbor.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=884426&grpid=0&isprv=0&bp=0&ou=1453155
 // https://www.cs.usfca.edu/~galles/visualization/StackArray.html
@@ -16,8 +17,8 @@
 
 int main()
 {
-    int programRunning = 1, size = 0, menuChoice, userInput;
-    int *stackPtr = (int *)malloc(sizeof(int));
+    int userInput, size = 0, programRunning = 1;
+    int *stackPtr = (int *)malloc(sizeof(int)); //This functions as an array that stores the values; is resized throughout.
 
     printf("\nWelcome to the stack program!\n");
 
@@ -36,9 +37,9 @@ int main()
         }
 
         printf("\n\nWhat would you like to do?\n> ");
-        scanf("%d", &menuChoice);
+        scanf("%d", &userInput);
 
-        switch (menuChoice)
+        switch (userInput)
         {
         case 1: //Add new value.
             printf("Please enter a value to place onto the stack: ");
