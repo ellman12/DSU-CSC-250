@@ -14,9 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h> //Malloc and realloc.
 
-int *resize(int *ptr, int *sizePtr);
-void printStack();
-
 int main()
 {
     int programRunning = 1, size = 0, menuChoice, userInput;
@@ -28,6 +25,7 @@ int main()
     {
         printf("\n1.) Add a new value to the stack.\n2.) Process a node on the stack.\n3.) Quit.\n\n");
 
+        //Print stack contents.
         if (size == 0)
             printf("The stack is currently empty.\n");
         else
@@ -45,7 +43,7 @@ int main()
         case 1: //Add new value.
             printf("Please enter a value to place onto the stack: ");
             scanf("%d", &userInput);
-            size++;
+            size++; //Adding more stuff to the stack.
             stackPtr = (int *)realloc(stackPtr, sizeof(int) * size);
             stackPtr[size - 1] = userInput;
             printf("%d has been added to the stack at index %d.\n\n", stackPtr[size - 1], size - 1);
@@ -57,7 +55,7 @@ int main()
             else
             {
                 printf("Now processing %d\n\n", stackPtr[size - 1]);
-                size--;
+                size--; //Remove top value from stack.
                 stackPtr = (int *)realloc(stackPtr, sizeof(int) * size);
                 printf("That value has been removed from the top of the stack.");
             }
@@ -77,22 +75,3 @@ int main()
 
     return 0;
 }
-
-// int *resize(int *ptr, int *sizePtr)
-// {
-
-//     return 0;
-// }
-
-// void printStack(int *stack, int *sizePtr)
-// {
-//     // if ((stack == NULL) || (stack == 0) || (*stack == 0))
-//     if ((*sizePtr == 0) || stack[*sizePtr])
-//         printf("The stack is currently empty.\n");
-//     else
-//     {
-//         printf("Current stack:\n");
-//         for (int i = 0; i < *sizePtr; i++)
-//             printf("%d\t", stack[i]);
-//     }
-// }
