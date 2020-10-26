@@ -13,43 +13,75 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int *resize(int *ptr, int *sizePtr);
+void printStack();
+
+// TODO: ask tom about ptr[];
+
 int main()
 {
-    int size = 1, menuChoice;
-    int *stack = (int *)malloc(sizeof(int) * size);
+    int programRunning = 1, size = 0, menuChoice, userInput;
+    int stack[1]; //Start at 1; can be expanded through realloc.
+    int *stackPtr = (int *)malloc(sizeof(int) * size);
 
-    printf("Welcome to stack program! Would you like to:\n1.) Add a new value to the stack.\n2.) Process a node on the stack.3.) Quit.\n\n");
-    scanf("%d", &menuChoice);
+    printf("Welcome to stack program!");
 
-    switch (menuChoice)
+    while (programRunning == 1)
     {
-    case 1:
-        size++;
-        stack = (int *)realloc(stack, sizeof(int) * size);
-        break;
+        printf("\nWould you like to:\n1.) Add a new value to the stack.\n2.) Process a node on the stack.\n3.) Quit.\n\n");
+        printStack(stackPtr, &size);
+        printf("\n>");
+        scanf("%d", &menuChoice);
 
-    case 2:
-        if ((stack[0] = NULL) || (stack[0] = 0))
+        switch (menuChoice)
         {
-            printf("The stack is currently empty.\n");
+        case 1: //Add new value.
+            printf("Please enter a value to place onto the stack: ");
+            scanf("%d", &userInput);
+            size++;
+            stackPtr = (int *)realloc(stackPtr, sizeof(int) * size);
+            *stackPtr = userInput;
+            printf("temp. stack[%d] = %d\n", size, *stackPtr);
             break;
-        } else {
-        printf("Which ");
+
+        case 2: //Print top node on stack.
+            printf("Processing stack[%d] = %d\n", size, *stackPtr);
+            break;
+
+        case 3: //Quit.
+            programRunning = 0;
+            printf("Goodbye!");
+            free(stackPtr);
+            break;
+
+        default: //Error.
+            printf("Error. Please enter a valid choice.");
+            break;
         }
-        break;
-
-    case 3:
-        printf("Goodbye!");
-        free(size);
-        free(menuChoice);
-        free(stack);
-        exit(0);
-        break;
-
-    default:
-        printf("Error. Please enter a valid choice.");
-        break;
     }
 
     return 0;
+}
+
+int *resize(int *ptr, int *sizePtr)
+{
+
+    return 0;
+}
+
+void printStack(int *stack, int *sizePtr)
+{
+    if ((stack == NULL) || (*stack == 0))
+    {
+        printf("The stack is currently empty.\n");
+    }
+    else
+    {
+        printf("Current stack: ");
+        printf("stack[%d] = %d\n", *sizePtr, *stack);
+        for (int i = 0; i < *sizePtr; i++)
+        {
+            printf("%d\t", stack[i]);
+        }
+    }
 }
