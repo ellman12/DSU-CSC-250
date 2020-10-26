@@ -32,7 +32,7 @@ int main()
         else
         {
             printf("Current stack:\n");
-            for (int i = 1; i <= size; i++)
+            for (int i = 0; i < size; i++)
                 printf("%d\t", stackPtr[i]);
         }
 
@@ -46,12 +46,12 @@ int main()
             scanf("%d", &userInput);
             size++;
             stackPtr = (int *)realloc(stackPtr, sizeof(int) * size);
-            stackPtr[size] = userInput;
-            printf("stackPtr[size (%d)] = %d\n\n", size, stackPtr[size]);
+            stackPtr[size - 1] = userInput;
+            printf("stackPtr[size (%d)] = %d\n\n", size, stackPtr[size-1]);
             break;
 
         case 2: //Print top node on stack.
-            printf("Processing stack[%d] = %d\n", size, stackPtr[size]);
+            printf("Processing stack[%d] = %d\n", size, stackPtr[size-1]);
             break;
 
         case 3: //Quit.
