@@ -16,20 +16,27 @@
 int *resize(int *ptr, int *sizePtr);
 void printStack();
 
-// TODO: ask tom about ptr[];
-
 int main()
 {
     int programRunning = 1, size = 0, menuChoice, userInput;
     int *stackPtr = (int *)malloc(sizeof(int) * 1);
 
-    printf("Welcome to stack program!");
+    printf("\nWelcome to the stack program!\n");
 
     while (programRunning == 1)
     {
-        printf("\nWould you like to:\n1.) Add a new value to the stack.\n2.) Process a node on the stack.\n3.) Quit.\n\n");
-        printStack(stackPtr, &size);
-        printf("\n>");
+        printf("\n1.) Add a new value to the stack.\n2.) Process a node on the stack.\n3.) Quit.\n\n");
+
+        if (size == 0)
+            printf("The stack is currently empty.\n");
+        else
+        {
+            printf("Current stack:\n");
+            for (int i = 1; i <= size; i++)
+                printf("%d\t", stackPtr[i]);
+        }
+
+        printf("\nWhat would you like to do? ");
         scanf("%d", &menuChoice);
 
         switch (menuChoice)
@@ -39,12 +46,12 @@ int main()
             scanf("%d", &userInput);
             size++;
             stackPtr = (int *)realloc(stackPtr, sizeof(int) * size);
-            *stackPtr = userInput;
-            printf("temp. stack[%d] = %d\n", size, *stackPtr);
+            stackPtr[size] = userInput;
+            printf("stackPtr[size (%d)] = %d\n\n", size, stackPtr[size]);
             break;
 
         case 2: //Print top node on stack.
-            printf("Processing stack[%d] = %d\n", size, *stackPtr);
+            printf("Processing stack[%d] = %d\n", size, stackPtr[size]);
             break;
 
         case 3: //Quit.
@@ -53,8 +60,13 @@ int main()
             free(stackPtr);
             break;
 
-        default: //Error.
-            printf("Error. Please enter a valid choice.");
+        default: //Error. temporarily a debug menu thing.
+            // printf("Error. Please enter a valid choice.");
+            printf("stackPtr[0] = %d\n", stackPtr[0]);
+            printf("stackPtr[1] = %d\n", stackPtr[1]);
+            printf("stackPtr[2] = %d\n", stackPtr[2]);
+            printf("stackPtr[3] = %d\n", stackPtr[3]);
+            printf("stackPtr[4] = %d\n", stackPtr[4]);
             break;
         }
     }
@@ -70,17 +82,15 @@ int *resize(int *ptr, int *sizePtr)
 
 void printStack(int *stack, int *sizePtr)
 {
-    if ((stack == NULL) || (stack == 0) || (*stack == 0))
+    // if ((stack == NULL) || (stack == 0) || (*stack == 0))
+    if (*sizePtr == 0)
     {
         printf("The stack is currently empty.\n");
     }
     else
     {
-        printf("Current stack: ");
-        printf("stack[%d] = %d\n", *sizePtr, *stack);
+        printf("Current stack:\n");
         for (int i = 0; i < *sizePtr; i++)
-        {
             printf("%d\t", stack[i]);
-        }
     }
 }
