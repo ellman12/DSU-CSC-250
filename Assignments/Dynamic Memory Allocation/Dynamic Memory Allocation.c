@@ -1,20 +1,21 @@
 ///////////////////////////////////////////////////////////////////////
-//Purpose:
+//Purpose: Homework for dynamic memory allocation.
 ///////////////////////////////////////////////////////////////////////
 //Programmer: Elliott DuCharme for Computer Science II (CSC 250).
 ///////////////////////////////////////////////////////////////////////
-//Due Date:
+//Due Date: Oct. 30th.
 ///////////////////////////////////////////////////////////////////////
 //Created: Friday, October 23, 2020 6:31 PM.
+//Finished:
 ///////////////////////////////////////////////////////////////////////
 //Comments: https://d2l.sdbor.edu/d2l/lms/dropbox/user/folder_submit_files.d2l?db=884426&grpid=0&isprv=0&bp=0&ou=1453155
 // https://www.cs.usfca.edu/~galles/visualization/StackArray.html
 ///////////////////////////////////////////////////////////////////////
 #include <stdio.h>
-#include <stdlib.h>
+#include <stdlib.h> //Malloc and realloc.
 
-int *resize(int *ptr, int *sizePtr);
-void printStack();
+// int *resize(int *ptr, int *sizePtr);
+// void printStack();
 
 int main()
 {
@@ -36,7 +37,7 @@ int main()
                 printf("%d\t", stackPtr[i]);
         }
 
-        printf("\n\nWhat would you like to do? ");
+        printf("\n\nWhat would you like to do?\n> ");
         scanf("%d", &menuChoice);
 
         switch (menuChoice)
@@ -50,28 +51,26 @@ int main()
             printf("%d has been added to the stack at index %d.\n\n", stackPtr[size - 1], size - 1);
             break;
 
-        case 2: //Print top node on stack.
-            if ((size == 0) || (stackPtr[size]))
+        case 2: //Print and then pop top node on stack.
+            if ((size == 0))
                 printf("The stack is currently empty.\n");
-            else {
-                printf("Processing stack[%d] = %d\n", size - 1, stackPtr[size - 1]);
-
+            else
+            {
+                printf("Now processing %d\n\n", stackPtr[size - 1]);
+                size--;
+                stackPtr = (int *)realloc(stackPtr, sizeof(int) * size);
+                printf("That value has been removed from the top of the stack.");
             }
             break;
 
-        case 3: //Quit.
+        case 3:
             printf("Goodbye!");
             free(stackPtr);
             programRunning = 0;
             break;
 
-        default: //Error. temporarily a debug menu thing.
-            // printf("Error. Please enter a valid choice.");
-            printf("stackPtr[0] = %d\n", stackPtr[0]);
-            printf("stackPtr[1] = %d\n", stackPtr[1]);
-            printf("stackPtr[2] = %d\n", stackPtr[2]);
-            printf("stackPtr[3] = %d\n", stackPtr[3]);
-            printf("stackPtr[4] = %d\n", stackPtr[4]);
+        default:
+            printf("Error. Please enter a valid choice.");
             break;
         }
     }
@@ -79,21 +78,21 @@ int main()
     return 0;
 }
 
-int *resize(int *ptr, int *sizePtr)
-{
+// int *resize(int *ptr, int *sizePtr)
+// {
 
-    return 0;
-}
+//     return 0;
+// }
 
-void printStack(int *stack, int *sizePtr)
-{
-    // if ((stack == NULL) || (stack == 0) || (*stack == 0))
-    if ((*sizePtr == 0) || stack[*sizePtr])
-        printf("The stack is currently empty.\n");
-    else
-    {
-        printf("Current stack:\n");
-        for (int i = 0; i < *sizePtr; i++)
-            printf("%d\t", stack[i]);
-    }
-}
+// void printStack(int *stack, int *sizePtr)
+// {
+//     // if ((stack == NULL) || (stack == 0) || (*stack == 0))
+//     if ((*sizePtr == 0) || stack[*sizePtr])
+//         printf("The stack is currently empty.\n");
+//     else
+//     {
+//         printf("Current stack:\n");
+//         for (int i = 0; i < *sizePtr; i++)
+//             printf("%d\t", stack[i]);
+//     }
+// }
