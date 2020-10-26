@@ -14,8 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h> //Malloc and realloc.
 
-// int *resize(int *ptr, int *sizePtr);
-// void printStack();
+int *resize(int *ptr, int *sizePtr);
+void printStack();
 
 int main()
 {
@@ -70,7 +70,7 @@ int main()
             break;
 
         default:
-            printf("Error. Please enter a valid choice.");
+            printf("\nError. Please enter a valid choice.\n\n");
             break;
         }
     }
