@@ -21,8 +21,7 @@ void printStack();
 int main()
 {
     int programRunning = 1, size = 0, menuChoice, userInput;
-    int stack[1]; //Start at 1; can be expanded through realloc.
-    int *stackPtr = (int *)malloc(sizeof(int) * size);
+    int *stackPtr = (int *)malloc(sizeof(int) * 1);
 
     printf("Welcome to stack program!");
 
@@ -71,7 +70,7 @@ int *resize(int *ptr, int *sizePtr)
 
 void printStack(int *stack, int *sizePtr)
 {
-    if ((stack == NULL) || (*stack == 0))
+    if ((stack == NULL) || (stack == 0) || (*stack == 0))
     {
         printf("The stack is currently empty.\n");
     }
