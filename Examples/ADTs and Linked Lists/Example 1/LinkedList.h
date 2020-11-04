@@ -60,4 +60,33 @@ void printList(node *head)
     printf("\n");
 }
 
+//Indexes start at zero (at the head).
+node *deleteNode(node *head, int index, int size)
+{
+    if (index >= size)
+    {
+        printf("Index %d is too large for size %d.\n", index, size);
+        return head;
+    }
+    else if (index == 0) //Check if deleting the first node.
+    {
+        node *deletePtr = head;
+        head = head->next;
+        free(deletePtr);
+        return head;
+    }
+    else
+    {
+        //Traverse one short of where to delete.
+        node *temp = head;
+        for (int i = 0; i < index - 1; i++)
+            temp = temp->next;
+
+        node *deletePtr = temp->next;
+        temp->next = deletePtr->next;
+        free(deletePtr);
+        return head;
+    }
+}
+
 #endif

@@ -26,5 +26,15 @@ int main()
         size++;
         printList(head);
     }
+
+    for (int i = 0; i < 3; i++)
+    {
+        printf("Which index would you like to delete? ");
+        scanf("%d", &index);
+        head = deleteNode(head, index, size);
+        size--;
+        printList(head);
+    }
+
     return 0;
 }
