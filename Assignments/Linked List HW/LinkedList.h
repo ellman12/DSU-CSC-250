@@ -89,14 +89,45 @@ node *deleteNode(node *head, int index, int size)
     }
 }
 
-//Insert.
-node* enqueue(node* head, node** tail, int data) {
-    *tail->next
+//Insert in queue.
+node *enqueue(node *head, int *data, int index, int size)
+{
+    //If there is one node in the list, then size = 1.
+    //If size is zero, and index is zero, that's OK.
+    if (index > size)
+    {
+        printf("%d is too big, our list size is %d.\n", index, size);
+        return head;
+    }
+
+    node *newNode = (node *)malloc(sizeof(node));
+    newNode->data = data;
+    newNode->next = NULL;
+
+    //Check if we're inserting at the head node.
+    if (index == 0)
+    {
+        newNode->next = head;
+        head = newNode;
+        return head;
+    }
+
+    //Inserting at index, need to stop short by one.
+    node *temp = head;
+    for (int i = 0; i < index - 1; i++)
+    {
+        temp = temp->next;
+    }
+
+    newNode->next = temp->next;
+    temp->next = newNode;
+
+    return head;
 }
 
 //Delete.
-node* dequeue()
+// node *dequeue()
 
-node* search(node* head, int key)
+// node *search(node *head, int key)
 
 #endif

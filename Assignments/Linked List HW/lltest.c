@@ -12,10 +12,9 @@
 
 int main()
 {
-    // int* valuePtr = (int*)malloc(sizeof(int));
+    int *valuePtr = (int *)malloc(sizeof(int));
     // head = dequeue(head, valuePtr);
 
-    int value;
     // head = dequeue(head, &value);
 
     node *head = NULL;
@@ -28,12 +27,15 @@ int main()
     {
         printf("Enter a number:\n");
         scanf("%d", &userInput);
-        //enqueue
-        //print out entre queue
+        head = enqueue(head, valuePtr);
+
+        printf("Queue contents:\n");
+        printList(head);
     }
 
-    for (i = 0; i < 3; i++) //dequeue (remove) 3 values
-    {                       //TODO: Print the list after each dequeue and print out the contents of valuePtr in the main function.
+    for (i = 0; i < 3; i++) //dequeue (remove) 3 values //TODO: Print the list after each dequeue and print out the contents of valuePtr in the main function.
+    {
+        
     }
 
     for (i = 0; i < 5; i++) //add values
