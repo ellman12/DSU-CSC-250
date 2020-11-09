@@ -12,13 +12,9 @@
 
 int main()
 {
-    // int *valuePtr = (int *)malloc(sizeof(int));
-    // head = dequeue(head, valuePtr);
-
-    // head = dequeue(head, &value);
-
+    int *valuePtr = (int *)malloc(sizeof(int));
     int d, userInput, size = 0;
-    node *head = NULL;
+    node *head = NULL, *foundNode = NULL;
     printList(head);
 
     printf("How many values would you like to add? ");
@@ -43,8 +39,13 @@ int main()
 
     for (int i = 0; i < userInput; i++)
     {
-        size--; //When removing nodes, and when you try and remove more nodes than there are, the program crashes when this line is after dequeue()🤔
+        size--;
         head = dequeue(head, size);
+        if (head == NULL)
+        {
+            printf("Error when deleting.\n");
+            continue;
+        }
         printf("\nQueue contents:\n");
         printList(head);
         printf("\n");
@@ -66,23 +67,21 @@ int main()
         printf("\n");
     }
 
-    printf("You can now search for 2 values in the queue.\n");
-    printf("What is the first value you want to search for? ");
-    scanf("%d", &userInput);
-    printf("\n");
+    printf("You can search for 2 values in the queue.\n");
+    for (int i = 0; i <2; i++)
+    {
+        printf("What is one value you want to search for? ");
+        scanf("%d", &userInput);
+        printf("\n");
 
-    //TODO: Do search stuff here.
-
-    printf("What is the second value you want to search for? ");
-    scanf("%d", &userInput);
-    printf("\n");
-
-    //TODO: Do search stuff here.
-
-    //TODO: Allow the user to enter in a value to search for two times. Using the search function, determine if the item is in the list.
-    // If the value is in the list, return the node* back to the main function and print out the memory address of the node and also the integer value it contains.
-    // If the value is not in the list, then return NULL. Back in the main function, print out an error message stating the value was not found.
+        foundNode = search(head, userInput);
+        if (foundNode == NULL)
+            printf("The node was not found.\n\n");
+        else
+            printf("The node has been found! It contains %d at address %p.\n", foundNode->data, &foundNode);
+    }
 
     free(head);
+    free(foundNode);
     return 0;
 }

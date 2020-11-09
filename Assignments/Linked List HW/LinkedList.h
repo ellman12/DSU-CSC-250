@@ -126,8 +126,8 @@ node *dequeue(node *head, int size)
 {
     if (size < 0)
     {
-        printf("ERROR. Size cannot be less than 0. Size specified: %d.", size);
-        return head;
+        printf("ERROR. Size cannot be less than 0. Size specified: %d.\n", size);
+        return NULL;
     }
 
     node *deletePtr = head;
@@ -136,10 +136,25 @@ node *dequeue(node *head, int size)
     return head;
 }
 
-node *search(node *head, int key) {
+node *search(node *head, int valueToSearchFor)
+{
+    node *searchNode = (node *)malloc(sizeof(node)); //Get more space somewhere for more nodes.
+    searchNode = head;
 
-    free(head);
-    return head;
+    if (head->data == valueToSearchFor) //Check if head value is what we want.
+        return searchNode;
+
+    for (int i = 0; i <= valueToSearchFor; i++)
+    {
+        searchNode = searchNode->next;
+        if (searchNode->data == valueToSearchFor)
+        {
+            return searchNode;
+        }
+    }
+
+    free(searchNode);
+    return NULL;
 }
 
 #endif
