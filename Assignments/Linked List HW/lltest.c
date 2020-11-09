@@ -44,8 +44,9 @@ int main()
         if (head == NULL)
         {
             printf("Error when deleting.\n");
-            // continue;
+            continue;
         }
+        
         printf("The value %d was just deleted.\n", *valuePtr);
         printf("Queue contents:\n");
         printList(head);
