@@ -28,7 +28,7 @@ int main()
 
         head = enqueue(head, d, size);
         size++; //This ha to be after enqueue so it inserts at index 0.
-        printf("\nQueue contents:\n");
+        printf("Queue contents:\n");
         printList(head);
         printf("\n");
     }
@@ -40,13 +40,14 @@ int main()
     for (int i = 0; i < userInput; i++)
     {
         size--;
-        head = dequeue(head, size);
+        head = dequeue(head, valuePtr, size);
         if (head == NULL)
         {
             printf("Error when deleting.\n");
-            continue;
+            // continue;
         }
-        printf("\nQueue contents:\n");
+        printf("The value %d was just deleted.\n", *valuePtr);
+        printf("Queue contents:\n");
         printList(head);
         printf("\n");
     }
@@ -62,13 +63,13 @@ int main()
 
         head = enqueue(head, d, size);
         size++;
-        printf("\nQueue contents:\n");
+        printf("Queue contents:\n");
         printList(head);
         printf("\n");
     }
 
     printf("You can search for 2 values in the queue.\n");
-    for (int i = 0; i <2; i++)
+    for (int i = 0; i < 2; i++)
     {
         printf("What is one value you want to search for? ");
         scanf("%d", &userInput);
@@ -78,7 +79,9 @@ int main()
         if (foundNode == NULL)
             printf("The node was not found.\n\n");
         else
+        {
             printf("The node has been found! It contains %d at address %p.\n", foundNode->data, &foundNode);
+        }
     }
 
     free(head);

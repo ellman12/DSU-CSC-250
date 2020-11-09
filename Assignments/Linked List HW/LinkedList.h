@@ -122,7 +122,7 @@ node *enqueue(node *head, int d, int size)
 }
 
 //Delete.
-node *dequeue(node *head, int size)
+node *dequeue(node *head, int *valuePtr, int size)
 {
     if (size < 0)
     {
@@ -131,7 +131,10 @@ node *dequeue(node *head, int size)
     }
 
     node *deletePtr = head;
+    *valuePtr = deletePtr->data;
+
     head = head->next;
+
     free(deletePtr);
     return head;
 }
