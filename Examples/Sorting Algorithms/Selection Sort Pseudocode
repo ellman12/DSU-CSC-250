@@ -1,0 +1,9 @@
+Selection Sort Pseudocode
+
+SelectionSort(Array, Size)
+    i = 0
+    loop i < size-1
+        j = i
+        sso = Array at j //Smallest So Far
+        Loop j < size
+            If Array[j] < Array [i] //Bug
