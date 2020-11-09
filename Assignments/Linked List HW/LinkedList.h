@@ -51,13 +51,17 @@ node *insertNode(node *head, int d, int index, int size)
 
 void printList(node *head)
 {
-    node *temp = head;
-    while (temp != NULL)
+    if ((head == NULL))
+        printf("The queue is currently empty.\n");
+
+    while (head != NULL)
     {
-        printf("%d  ", temp->data);
-        temp = temp->next;
+        printf("%d  ", head->data);
+        head = head->next;
     }
     printf("\n");
+
+    free(head);
 }
 
 //Indexes start at zero (at the head).
@@ -90,31 +94,23 @@ node *deleteNode(node *head, int index, int size)
 }
 
 //Insert in queue.
-node *enqueue(node *head, int *data, int index, int size)
+node *enqueue(node *head, int d, int size)
 {
-    //If there is one node in the list, then size = 1.
-    //If size is zero, and index is zero, that's OK.
-    if (index > size)
-    {
-        printf("%d is too big, our list size is %d.\n", index, size);
-        return head;
-    }
-
-    node *newNode = (node *)malloc(sizeof(node));
-    newNode->data = data;
+    node *newNode = (node *)malloc(sizeof(node)); //Get more space somewhere for more nodes.
+    newNode->data = d;
     newNode->next = NULL;
 
     //Check if we're inserting at the head node.
-    if (index == 0)
+    if (size == 0)
     {
         newNode->next = head;
         head = newNode;
         return head;
     }
 
-    //Inserting at index, need to stop short by one.
+    //Inserting at max size, need to stop short by one.
     node *temp = head;
-    for (int i = 0; i < index - 1; i++)
+    for (int i = 0; i < size - 1; i++)
     {
         temp = temp->next;
     }
@@ -126,8 +122,24 @@ node *enqueue(node *head, int *data, int index, int size)
 }
 
 //Delete.
-// node *dequeue()
+node *dequeue(node *head, int size)
+{
+    if (size < 0)
+    {
+        printf("ERROR. Size cannot be less than 0. Size specified: %d.", size);
+        return head;
+    }
 
-// node *search(node *head, int key)
+    node *deletePtr = head;
+    head = head->next;
+    free(deletePtr);
+    return head;
+}
+
+node *search(node *head, int key) {
+
+    free(head);
+    return head;
+}
 
 #endif
