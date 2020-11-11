@@ -6,4 +6,9 @@ SelectionSort(Array, Size)
         j = i
         sso = Array at j //Smallest So Far
         Loop j < size
-            If Array[j] < Array [i] //Bug
+            If Array[j] < Array [sso]
+                sso = j
+        end loop
+        swap array[i] with array[sso]
+    end outer loop
+end Function
