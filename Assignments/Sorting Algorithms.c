@@ -11,26 +11,26 @@
 #include <time.h>   //For time
 #include <stdlib.h> // For srand and rand
 
-const int MIN = 0, MAX = 100, size = 10;
-int i, j, smallestSoFar, numbers[10];
+const int MIN = 0, MAX = 100, ARRAY_SIZE = 30;
+int numbers[30];
 
-void swap(int *xp, int *yp)
+void swap(int *x, int *y)
 {
-    int temp = *xp;
-    *xp = *yp;
-    *yp = temp;
+    int temp = *x;
+    *x = *y;
+    *y = temp;
 }
 
 void printArray(int numbers[], int size)
 {
-    for (i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
         printf("%d\t", numbers[i]);
     printf("\n\n");
 }
 
 void fillArrayRandNums(int numbers[], int size)
 {
-    for (i = 0; i < size; i++)
+    for (int i = 0; i < size; i++)
         numbers[i] = (rand() % (MAX + 1 - MIN) + MIN);
     printf("Array has been filled with random numbers.\n\n");
 }
@@ -39,21 +39,25 @@ void selectionSort(int numbers[], int size)
 {
     printf("Array is getting sorted by selection sorting.\n\n");
 
-    for (i = 0; i < size - 1; i++)
+    int startIndex;         //Index where comparison is starting.
+    int compareIndex;       //Indices after startIndex that are compared to startIndex. If smaller, they swap.
+    int smallestIndexSoFar; //When checking for smaller values, this stores the index of the smallest value found thus far.
+
+    //1. Start at beginning of list (0). 5. Continue until 2nd to last item.
+    for (startIndex = 0; startIndex < ARRAY_SIZE - 1; startIndex++)
     {
-        j = i;
-        smallestSoFar = numbers[j];
+        compareIndex = startIndex;
+        smallestIndexSoFar = startIndex;
 
-        for (j = 0; j < size; j++)
+        //2. Check every item after current index. Constantly updating, if necessary, the index of the smallest value.
+        for (compareIndex = startIndex + 1; compareIndex < ARRAY_SIZE; compareIndex++)
         {
-            if (numbers[j] < numbers[smallestSoFar])
-                smallestSoFar = j;
+            //3. Swap places with smallest item found.
+            if (numbers[compareIndex] < numbers[smallestIndexSoFar])
+                smallestIndexSoFar = compareIndex;
         }
-
-        // swap(&numbers[i], &numbers[smallestSoFar]);
-        int temp = numbers[smallestSoFar];
-        numbers[i] = numbers[smallestSoFar];
-        numbers[smallestSoFar] = temp;
+        swap(&numbers[startIndex], &numbers[smallestIndexSoFar]);
+        //4. Move to next index (1) and repeat.
     }
     printf("Selection sorting done.\n\n");
 }
@@ -85,15 +89,19 @@ int main()
 {
     srand(time(NULL));
 
-    fillArrayRandNums(numbers, size);
-    printArray(numbers, size);
+    //Initialize
+    fillArrayRandNums(numbers, ARRAY_SIZE);
+    printArray(numbers, ARRAY_SIZE);
 
-    selectionSort(numbers, size);
-    printArray(numbers, size);
+    //Selection sort
+    selectionSort(numbers, ARRAY_SIZE);
+    printArray(numbers, ARRAY_SIZE);
 
-    fillArrayRandNums(numbers, size);
-    bubbleSort(numbers, size);
-    printArray(numbers, size);
+    //Bubble sort
+    fillArrayRandNums(numbers, ARRAY_SIZE);
+    printArray(numbers, ARRAY_SIZE);
+    bubbleSort(numbers, ARRAY_SIZE);
+    printArray(numbers, ARRAY_SIZE);
 
     return 0;
 }
