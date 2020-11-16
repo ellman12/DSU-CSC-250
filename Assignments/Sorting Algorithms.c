@@ -88,7 +88,6 @@ int main()
     fillArrayRandNums(numbers, size);
     printArray(numbers, size);
 
-    fillArrayRandNums(numbers, size);
     selectionSort(numbers, size);
     printArray(numbers, size);
 
