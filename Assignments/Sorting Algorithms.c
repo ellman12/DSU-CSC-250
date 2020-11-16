@@ -24,22 +24,21 @@ void swap(int *xp, int *yp)
 void printArray(int numbers[], int size)
 {
     for (i = 0; i < size; i++)
-        printf("numbers[%d] = %d\n", i, numbers[i]);
-    printf("\n");
+        printf("%d\t", numbers[i]);
+    printf("\n\n");
 }
 
-void fillArray(int numbers[], int size)
+void fillArrayRandNums(int numbers[], int size)
 {
-    //TODO:.................change this back to rand!
     for (i = 0; i < size; i++)
-    {
-        // numbers[i] = i + 1;
         numbers[i] = (rand() % (MAX + 1 - MIN) + MIN);
-    }
+    printf("Array has been filled with random numbers.\n\n");
 }
 
 void selectionSort(int numbers[], int size)
 {
+    printf("Array is getting sorted by selection sorting.\n\n");
+
     for (i = 0; i < size - 1; i++)
     {
         j = i;
@@ -56,24 +55,46 @@ void selectionSort(int numbers[], int size)
         numbers[i] = numbers[smallestSoFar];
         numbers[smallestSoFar] = temp;
     }
+    printf("Selection sorting done.\n\n");
 }
 
 void bubbleSort(int numbers[], int size)
 {
+    printf("Array is getting sorted by bubble sorting.\n\n");
+
+    int flag = 0; //0 means not sorted, 1 means it is sorted MAYBE.
+    do
+    {
+        int i = 0;
+        flag = 1;
+        while (i < size - 1)
+        {
+            if (numbers[i] > numbers[i + 1])
+            {
+                // Swap values at i and i+i
+                swap(&numbers[i], &numbers[i + 1]);
+                flag = 0;
+            }
+            i++;
+        }
+    } while (flag == 0);
+    printf("Bubble sorting done.\n\n");
 }
 
 int main()
 {
     srand(time(NULL));
 
-    fillArray(numbers, size);
+    fillArrayRandNums(numbers, size);
     printArray(numbers, size);
 
+    fillArrayRandNums(numbers, size);
     selectionSort(numbers, size);
     printArray(numbers, size);
 
-    // bubbleSort(numbers);
-    // printArray(numbers);
+    fillArrayRandNums(numbers, size);
+    bubbleSort(numbers, size);
+    printArray(numbers, size);
 
     return 0;
 }

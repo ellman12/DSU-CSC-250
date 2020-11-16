@@ -8,5 +8,5 @@ BubbleSort(Array, Size)
                 Swap values at i and i+i
                 flag = 0
             i++
-    While(flag is 0)
+    While(flag is 0);
 End BubbleSort
