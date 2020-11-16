@@ -11,8 +11,8 @@
 #include <time.h>   //For time
 #include <stdlib.h> // For srand and rand
 
-const int MIN = 0, MAX = 100, ARRAY_SIZE = 30;
-int numbers[30];
+const int MIN = 0, MAX = 100, ARRAY_SIZE = 10;
+int numbers[10];
 
 void swap(int *x, int *y)
 {
